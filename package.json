@@ -1,0 +1,36 @@
+{
+  "name": "partykit-text-editor-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npx esbuild src/client.tsx --outdir=public --bundle --watch --servedir=public",
+    "server": "npx partykit dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hocuspocus/transformer": "^2.3.1",
+    "@supabase/supabase-js": "^2.31.0",
+    "@tiptap/extension-collaboration": "^2.0.4",
+    "@tiptap/extension-collaboration-cursor": "^2.0.4",
+    "@tiptap/pm": "^2.0.4",
+    "@tiptap/react": "^2.0.4",
+    "@tiptap/starter-kit": "^2.0.4",
+    "dotenv": "^16.3.1",
+    "mysql2": "^3.5.2",
+    "partykit": "^0.0.0-5ed8917",
+    "planetscale": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "y-partykit": "^0.0.0-5ed8917",
+    "y-prosemirror": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "esbuild": "^0.18.17"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "partykit-text-editor-example",
+  "main": "src/main.ts",
+  "vars": {
+    "xy": 123
+  }
+}
