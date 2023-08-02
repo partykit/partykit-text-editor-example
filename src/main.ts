@@ -19,46 +19,45 @@ export default {
       room.env.SUPABASE_KEY as string
     );
     onConnect(conn, room, {
-      persist: true,
-      //   async load() {
-      //     const { data, error } = await supabase
-      //       .from("documents")
-      //       .select("document")
-      //       .eq("name", room.id)
-      //       .single();
+      async load() {
+        const { data, error } = await supabase
+          .from("documents")
+          .select("document")
+          .eq("name", room.id)
+          .single();
 
-      //     if (error) {
-      //       console.error("ERROR", error);
-      //     }
+        if (error) {
+          console.error("ERROR", error);
+        }
 
-      //     if (data) {
-      //       const doc = transformer.toYdoc(data.document, rootFragmentField);
-      //       return doc;
-      //     } else {
-      //       return new Y.Doc();
-      //     }
-      //   },
-      //   callback: {
-      //     handler: async (doc) => {
-      //       doc;
-      //       const json = transformer.fromYdoc(doc, rootFragmentField);
-      //       console.log(JSON.stringify(json.content, null, 2));
+        if (data) {
+          const doc = transformer.toYdoc(data.document, rootFragmentField);
+          return doc;
+        } else {
+          return new Y.Doc();
+        }
+      },
+      callback: {
+        handler: async (doc) => {
+          doc;
+          const json = transformer.fromYdoc(doc, rootFragmentField);
+          console.log(JSON.stringify(json.content, null, 2));
 
-      //       const { data, error } = await supabase.from("documents").upsert(
-      //         {
-      //           name: room.id,
-      //           document: json,
-      //         },
-      //         { onConflict: "name" }
-      //       );
+          const { data, error } = await supabase.from("documents").upsert(
+            {
+              name: room.id,
+              document: json,
+            },
+            { onConflict: "name" }
+          );
 
-      //       if (error) {
-      //         console.error("ERROR", error);
-      //       }
+          if (error) {
+            console.error("ERROR", error);
+          }
 
-      //       console.log("DATA", data);
-      //     },
-      //   },
+          console.log("DATA", data);
+        },
+      },
     });
   },
 } satisfies PartyKitServer;
