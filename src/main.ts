@@ -13,12 +13,13 @@ const transformer = TiptapTransformer.extensions(getBaseExtensions());
 const rootFragmentField = "default";
 
 export default {
-  onConnect(conn, room) {
+  async onConnect(conn, room) {
     const supabase = createClient(
       "https://kgbcnztvpzpdunqeljum.supabase.co",
-      room.env.SUPABASE_KEY as string
+      room.env.SUPABASE_KEY as string,
+      { auth: { persistSession: false } }
     );
-    onConnect(conn, room, {
+    await onConnect(conn, room, {
       async load() {
         const { data, error } = await supabase
           .from("documents")
