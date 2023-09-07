@@ -3,5 +3,9 @@
   "main": "src/main.ts",
   "vars": {
     "xy": 123
+  },
+  "serve": {
+    "path": "public",
+    "build": "src/client.tsx"
   }
 }

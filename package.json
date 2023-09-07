@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npx esbuild src/client.tsx --outdir=public --bundle --watch --servedir=public",
-    "server": "npx partykit dev"
+    "dev": "npx partykit dev"
   },
   "keywords": [],
   "author": "",
@@ -21,16 +20,15 @@
     "@tiptap/starter-kit": "^2.0.4",
     "dotenv": "^16.3.1",
     "mysql2": "^3.5.2",
-    "partykit": "^0.0.0-5ed8917",
+    "partykit": "^0.0.7",
     "planetscale": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "y-partykit": "^0.0.0-5ed8917",
-    "y-prosemirror": "^1.2.1"
+    "y-partykit": "^0.0.1",
+    "y-prosemirror": "^1.0.20"
   },
   "devDependencies": {
     "@types/react": "^18.2.18",
-    "@types/react-dom": "^18.2.7",
-    "esbuild": "^0.18.17"
+    "@types/react-dom": "^18.2.7"    
   }
 }

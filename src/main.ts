@@ -14,8 +14,7 @@ const rootFragmentField = "default";
 
 export default {
   async onConnect(conn, room) {
-    const supabase = createClient(
-      "https://kgbcnztvpzpdunqeljum.supabase.co",
+    const supabase = createClient(room.env.SUPABASE_URL,
       room.env.SUPABASE_KEY as string,
       { auth: { persistSession: false } }
     );
