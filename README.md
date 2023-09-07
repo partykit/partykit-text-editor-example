@@ -1,5 +1,7 @@
 ## PartyKit example: collaborative text editor
 
+![text editor demo](./text-editor.gif)
+
 This example app features a collaborative text editor built with [Yjs](https://yjs.dev/), [Tiptap](https://tiptap.dev/) and [Supabase](https://supabase.com/).
 
 ## Getting Started
@@ -20,7 +22,5 @@ npm run dev
 ```
 
 This will start the PartyKit development server at port **1999**.
-ś
-Open [http://localhost:1999](http://localhost:1999) with your browser to see the result.
 
-![text editor demo](./text-editor.gif)
+Open [http://localhost:1999](http://localhost:1999) with your browser to see the result.
