@@ -14,7 +14,7 @@ cp .env.example .env
 
 Then, create a new Supabase project and open the created `.env` file to fill in the missing environment variables with the new project information.
 
-In Supabse's SQL editor, create a `documents` table with:
+In Supabase's SQL editor, create a `documents` table with:
 ```sql
 create table
   public.documents (
