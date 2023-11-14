@@ -24,7 +24,7 @@ export default {
           .from("documents")
           .select("document")
           .eq("name", room.id)
-          .single();
+          .maybeSingle();
 
         if (error) {
           console.error("ERROR", error);
