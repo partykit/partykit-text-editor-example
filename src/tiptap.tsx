@@ -35,7 +35,7 @@ const Tiptap = () => {
     ],
   });
 
-  return <EditorContent editor={editor} />;
+  return <EditorContent style={{ border: "solid" }} editor={editor} />;
 };
 
 export default Tiptap;
