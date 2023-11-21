@@ -11,24 +11,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hocuspocus/transformer": "^2.3.1",
-    "@supabase/supabase-js": "^2.31.0",
-    "@tiptap/extension-collaboration": "^2.0.4",
-    "@tiptap/extension-collaboration-cursor": "^2.0.4",
-    "@tiptap/pm": "^2.0.4",
-    "@tiptap/react": "^2.0.4",
-    "@tiptap/starter-kit": "^2.0.4",
+    "@hocuspocus/transformer": "^2.8.0",
+    "@supabase/supabase-js": "^2.38.5",
+    "@tiptap/extension-collaboration": "^2.1.12",
+    "@tiptap/extension-collaboration-cursor": "^2.1.12",
+    "@tiptap/pm": "^2.1.12",
+    "@tiptap/react": "^2.1.12",
+    "@tiptap/starter-kit": "^2.1.12",
     "dotenv": "^16.3.1",
-    "mysql2": "^3.5.2",
-    "partykit": "^0.0.7",
+    "partykit": "^0.0.38",
     "planetscale": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "y-partykit": "^0.0.1",
+    "y-partykit": "^0.0.10",
     "y-prosemirror": "^1.0.20"
   },
   "devDependencies": {
-    "@types/react": "^18.2.18",
-    "@types/react-dom": "^18.2.7"    
+    "@types/react": "^18.2.38",
+    "@types/react-dom": "^18.2.16"
   }
 }

@@ -1,4 +1,4 @@
-import type { PartyKitServer } from "partykit/server";
+import type * as Party from "partykit/server";
 import { onConnect } from "y-partykit";
 
 import { createClient } from "@supabase/supabase-js";
@@ -12,18 +12,21 @@ import * as Y from "yjs";
 const transformer = TiptapTransformer.extensions(getBaseExtensions());
 const rootFragmentField = "default";
 
-export default {
-  async onConnect(conn, room) {
-    const supabase = createClient(room.env.SUPABASE_URL,
-      room.env.SUPABASE_KEY as string,
+export default class implements Party.Server {
+  constructor(public party: Party.Party) {}
+  async onConnect(conn) {
+    const party = this.party;
+    const supabase = createClient(
+      this.party.env.SUPABASE_URL as string,
+      this.party.env.SUPABASE_KEY as string,
       { auth: { persistSession: false } }
     );
-    await onConnect(conn, room, {
+    await onConnect(conn, this.party, {
       async load() {
         const { data, error } = await supabase
           .from("documents")
           .select("document")
-          .eq("name", room.id)
+          .eq("name", party.id)
           .maybeSingle();
 
         if (error) {
@@ -45,7 +48,7 @@ export default {
 
           const { data, error } = await supabase.from("documents").upsert(
             {
-              name: room.id,
+              name: party.id,
               document: json,
             },
             { onConflict: "name" }
@@ -59,5 +62,5 @@ export default {
         },
       },
     });
-  },
-} satisfies PartyKitServer;
+  }
+}
