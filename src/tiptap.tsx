@@ -1,8 +1,6 @@
 // src/Tiptap.jsx
 import * as React from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import * as Y from "yjs";
 import useYProvider from "y-partykit/react";
 import Collaboration from "@tiptap/extension-collaboration";
 import CollaborationCursor from "@tiptap/extension-collaboration-cursor";
@@ -11,11 +9,13 @@ import { getBaseExtensions } from "./extensions";
 
 declare const PARTYKIT_HOST: string;
 
-const Tiptap = () => {
+export default function Tiptap() {
   const provider = useYProvider({
     host: PARTYKIT_HOST,
     room: "y-partykit-text-editor-example", // replace with your own document name
-    options: {},
+    options: {
+      // y-websocket options
+    },
   });
 
   const editor = useEditor({
@@ -36,6 +36,4 @@ const Tiptap = () => {
   });
 
   return <EditorContent style={{ border: "solid" }} editor={editor} />;
-};
-
-export default Tiptap;
+}
