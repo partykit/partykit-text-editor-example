@@ -1,27 +1,28 @@
 // src/Tiptap.jsx
-import * as React from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import useYProvider from "y-partykit/react";
 import Collaboration from "@tiptap/extension-collaboration";
 import CollaborationCursor from "@tiptap/extension-collaboration-cursor";
+import StarterKit from "@tiptap/starter-kit";
 
-import { getBaseExtensions } from "./extensions";
+// 5 bright colors
+const colours = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF"];
 
-declare const PARTYKIT_HOST: string;
+// Pick a random color from the list
+// This is just for demonstration purposes
+const MY_COLOR = colours[Math.floor(Math.random() * colours.length)];
 
 export default function Tiptap() {
   const provider = useYProvider({
-    host: PARTYKIT_HOST,
     room: "y-partykit-text-editor-example", // replace with your own document name
-    // // optionally, y-websocket options
-    // options: {
-
-    // },
   });
 
   const editor = useEditor({
     extensions: [
-      ...getBaseExtensions(),
+      StarterKit.configure({
+        // The Collaboration extension comes with its own history handling
+        history: false,
+      }),
       Collaboration.configure({
         document: provider.doc,
       }),
@@ -30,7 +31,7 @@ export default function Tiptap() {
         provider: provider,
         user: {
           name: provider.id,
-          color: "#f783bc",
+          color: MY_COLOR,
         },
       }),
     ],
