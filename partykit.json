@@ -1,9 +1,7 @@
 {
   "name": "partykit-text-editor-example",
   "main": "src/main.ts",
-  "vars": {
-    "xy": 123
-  },
+  "compatibilityDate": "2024-02-19",
   "serve": {
     "path": "public",
     "build": "src/client.tsx"

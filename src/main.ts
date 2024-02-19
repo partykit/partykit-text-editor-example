@@ -12,17 +12,21 @@ import * as Y from "yjs";
 const transformer = TiptapTransformer.extensions(getBaseExtensions());
 const rootFragmentField = "default";
 
+const supabase = createClient(
+  process.env.SUPABASE_URL as string,
+  process.env.SUPABASE_KEY as string,
+  { auth: { persistSession: false } }
+);
+
 export default class implements Party.Server {
-  constructor(public party: Party.Party) {}
-  async onConnect(conn) {
-    const party = this.party;
-    const supabase = createClient(
-      this.party.env.SUPABASE_URL as string,
-      this.party.env.SUPABASE_KEY as string,
-      { auth: { persistSession: false } }
-    );
-    await onConnect(conn, this.party, {
+  constructor(public room: Party.Room) {}
+  async onConnect(connection: Party.Connection) {
+    const party = this.room;
+
+    await onConnect(connection, this.room, {
       async load() {
+        // console.log("trying to load from database...");
+
         const { data, error } = await supabase
           .from("documents")
           .select("document")
@@ -30,21 +34,22 @@ export default class implements Party.Server {
           .maybeSingle();
 
         if (error) {
-          console.error("ERROR", error);
+          console.error("failed to load from database:", error);
         }
 
         if (data) {
+          // console.log("receieved intial data from database");
           const doc = transformer.toYdoc(data.document, rootFragmentField);
           return doc;
         } else {
+          // console.log("no initial data, creating new doc");
           return new Y.Doc();
         }
       },
       callback: {
         handler: async (doc) => {
-          doc;
+          // console.log("saving to database...");
           const json = transformer.fromYdoc(doc, rootFragmentField);
-          console.log(JSON.stringify(json.content, null, 2));
 
           const { data, error } = await supabase.from("documents").upsert(
             {
@@ -55,10 +60,10 @@ export default class implements Party.Server {
           );
 
           if (error) {
-            console.error("ERROR", error);
+            console.error("error", error);
           }
 
-          console.log("DATA", data);
+          // console.log("saved to database");
         },
       },
     });

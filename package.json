@@ -4,30 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx partykit dev"
+    "dev": "npx partykit dev --live"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hocuspocus/transformer": "^2.8.0",
-    "@supabase/supabase-js": "^2.38.5",
-    "@tiptap/extension-collaboration": "^2.1.12",
-    "@tiptap/extension-collaboration-cursor": "^2.1.12",
-    "@tiptap/pm": "^2.1.12",
-    "@tiptap/react": "^2.1.12",
-    "@tiptap/starter-kit": "^2.1.12",
-    "dotenv": "^16.3.1",
-    "partykit": "^0.0.38",
-    "planetscale": "^2.1.0",
+    "@hocuspocus/transformer": "^2.11.2",
+    "@supabase/supabase-js": "^2.39.7",
+    "@tiptap/extension-collaboration": "^2.2.3",
+    "@tiptap/extension-collaboration-cursor": "^2.2.3",
+    "@tiptap/react": "^2.2.3",
+    "@tiptap/starter-kit": "^2.2.3",
+    "partykit": "^0.0.91",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "y-partykit": "^0.0.10",
-    "y-prosemirror": "^1.0.20"
+    "y-partykit": "^0.0.23"
   },
   "devDependencies": {
-    "@types/react": "^18.2.38",
-    "@types/react-dom": "^18.2.16"
+    "@types/react": "^18.2.56",
+    "@types/react-dom": "^18.2.19"
   }
 }

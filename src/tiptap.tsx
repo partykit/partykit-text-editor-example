@@ -13,9 +13,10 @@ export default function Tiptap() {
   const provider = useYProvider({
     host: PARTYKIT_HOST,
     room: "y-partykit-text-editor-example", // replace with your own document name
-    options: {
-      // y-websocket options
-    },
+    // // optionally, y-websocket options
+    // options: {
+
+    // },
   });
 
   const editor = useEditor({
